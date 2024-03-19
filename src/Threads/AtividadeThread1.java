@@ -9,8 +9,6 @@ import java.util.Scanner;
 
 public class AtividadeThread1 extends Thread {
 
-    final static long NUMERO_TOTAL = 1_000_000_000L;
-
     private int[] linha;
     private long soma;
 
@@ -61,7 +59,7 @@ public class AtividadeThread1 extends Thread {
         }
 
         System.out.println("Soma das linhas da matriz:");
-        
+
         for (int i = 0; i < linhas; i++) {
             System.out.println("Linha " + i + ": " + lista.get(i).getSoma());
         }

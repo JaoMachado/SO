@@ -1,4 +1,4 @@
-public class App {
+public class VerificandoProcessos {
     public static void main(String[] args) throws Exception {
         if (args.length < 1) {
             long currentProcessId = ProcessHandle.current().pid();

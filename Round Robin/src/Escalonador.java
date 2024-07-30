@@ -16,7 +16,7 @@ public class Escalonador {
     public void executar() {
         Processo processoAtual;
         while ((processoAtual = despachante.proximoProcesso()) != null) {
-            System.out.println("5.2 - Entrada de processo no processador: " + processoAtual.getId());
+            System.out.println("Entrada de processo no processador: " + processoAtual.getId());
     
             int tempoTotalProcesso = 0; // Variável para armazenar o tempo total de execução do processo
     
@@ -39,15 +39,17 @@ public class Escalonador {
     
             // Verifica se todas as instruções do processo foram processadas
             if (processoAtual.getInstrucoes().isEmpty()) {
-                System.out.println("5.4 - Finalização de processo " + processoAtual.getId() + " e tempo total de execução: " + tempoTotalProcesso + " segundos.");
-                System.out.println("5.3 - Saída de processo do processador: " + processoAtual.getId());
+                if (!processoAtual.isFinalizado()) { // Imprime a mensagem apenas se ainda não estiver finalizado
+                    System.out.println("Finalização de processo " + processoAtual.getId() + " e tempo total de execução: " + tempoTotalProcesso + " segundos.");
+                    processoAtual.setFinalizado(true); // Marca o processo como finalizado
+                }
+                System.out.println("Saída de processo do processador: " + processoAtual.getId());
             } else {
                 // Caso o processo não tenha terminado, adiciona de volta ao despachante
                 despachante.adicionarProcesso(processoAtual);
             }
         }
     }
-
 
     private int obterTempoInstrucao(char instrucao) {
         switch (instrucao) {
